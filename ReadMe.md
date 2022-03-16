@@ -1,14 +1,14 @@
-#3D Flipbook Field
+# 3D Flipbook Field
 
-##Background
+## Background
 This module is designed to display PDF files as a flipbook using the commercial Javascript library 3D FlipBook ([https://3dflipbook.net/](https://3dflipbook.net/)), and requires a purchase of that software.
 
 It works by creating a field formatter designed for file fields, either traditional node fields or media entities
 
-##Installation
+## Installation
 Install this module in your `modules` directory or subdirectory thereof.
 
-Put your copy of the commercial Javascript library in the `3d-flip-book` subdirectory of this module. The structure should look something like this:
+Create a `3d-flip-book` subdirectory in this module, and put your copy of the commercial Javascript library in it. The structure should look something like this:
 
 ```
 3d-flip-book

@@ -1,0 +1,41 @@
+<script src="{{ jquery }}"></script>
+<script src="{{ html2canvas.min.js }}"></script>
+<script src="{{ three }}"></script>
+<script src="{{ pdf_script }}"></script>
+
+
+<script type="text/javascript">
+  window.PDFJS_LOCALE = {
+    pdfJsWorker: '{{ pdf_worker }}',
+    pdfJsCMapUrl: 'cmaps'
+  };
+</script>
+
+<script src="{{ flipbook }}"></script>
+
+<script type="text/javascript">
+  $('.field--name-{{ field_name }} .field--item').FlipBook(
+    {
+      // propertiesCallback: function(props) { // optional function - it lets to customize 3D FlipBook
+      //   props.cover.padding = 1;
+      //   return props;
+      // },
+      pdf: '{{ pdf_file }}',
+      template: { // by means this property you can choose appropriate skin
+        html: '{{ book_view_html }}',
+        styles: [
+          '{{ styles }}'// or one of white-book-view.css, short-white-book-view.css, shart-black-book-view.css
+        ],
+        links: [{
+          rel: 'stylesheet',
+          href: '{{ stylesheet }}'
+        }],
+        script: '{{ book_view_js }}',
+        sounds: {
+          startFlip: '{{ startFlip_sound }}',
+          endFlip: '{{ endFlip_sound }}'
+        }
+      }
+    }
+  );
+</script>

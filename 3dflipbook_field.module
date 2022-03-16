@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file 3dflipbook_field.module
+ * @author Michael A. Sypes <michael@sypes.org>
+ *
+ * @abstract
+ * Registers twig template and sets up variables for same.
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function 3dflipbook_field_theme() {
+  $module_path = '/' . \Drupal::service('extension.list.module')->getPath('3dflipbook_field');
+
+  return array(
+    '3d_flipbook' => [
+      'variables' => [
+        'field_name' => NULL,
+        'pdf_file' => NULL,
+        'jquery' => $module_path . '/3d-flip-book/js/libs/jquery.min.js',
+        'html2canvas' => $module_path . '/3d-flip-book/js/libs/html2canvas.min.js',
+        'three' => $module_path . '/3d-flip-book/js/libs/three.min.js',
+        'pdf_script' => $module_path . '/3d-flip-book/js/libs/pdf.min.js',
+        'pdf_worker' => $module_path . '/3d-flip-book/js/libs/pdf.worker.js',
+        'flipbook' => $module_path . '/3d-flip-book/js/dist/3dflipbook.js',
+        'book_view_html' => $module_path . '/3d-flip-book/templates/default-book-view.html',
+        'styles' => $module_path . '/3d-flip-book/css/black-book-view.css', // one of black-book-view.css, white-book-view.css, short-white-book-view.css, short-black-book-view.css
+        'stylesheet' => $module_path .'/3d-flip-book/css/font-awesome.min.css',
+        'book_view_js' => $module_path . '/3d-flip-book/js/default-book-view.js',
+        'startFlip_sound' => $module_path . '/3d-flip-book/sounds/start-flip.mp3',
+        'endFlip_sound' => $module_path . '/3d-flip-book/sounds/end-flip.mp3',
+      ],
+      'template' => '3d-flipbook',
+    ],
+  );
+}
+
+function 3dflipbook_field_preprocess_field(&$variables){
+  if($variables['element']['#formatter'] === 'pdf_flipbook'){
+    $variables['attributes']['class'][] = 'pdf-flipbook';
+  }
+}
